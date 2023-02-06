@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 _README.md
+.env

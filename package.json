@@ -14,7 +14,13 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "auto-prefixer": "^0.4.2",
+    "epic-spinners": "^2.0.0",
     "pinia": "^2.0.28",
+    "postcss": "^8.4.21",
+    "postcss-nested": "^6.0.0",
+    "postcss-preset-env": "^8.0.1",
+    "remixicon": "^2.5.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

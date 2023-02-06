@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import SearchBar from './components/SearchBar.vue';
 </script>
 
 <template>
@@ -11,7 +10,6 @@ import SearchBar from './components/SearchBar.vue';
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/add_company">About</RouterLink>
       </nav>
-      <SearchBar />
     </div>
   </header>
 
