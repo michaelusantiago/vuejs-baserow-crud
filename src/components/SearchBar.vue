@@ -1,12 +1,30 @@
 <script setup lang="ts">
-   import { ref } from 'vue'; 
+   import { ref, watch } from 'vue'; 
    const refSearchInput = ref<HTMLInputElement | null>(null)
    let searchInput = ref('')
+   let hadSearch = ref(false)
+
+   const emit = defineEmits(['search', 'clear-search'])
 
    const onClickClearSearch = () => {
         refSearchInput.value?.focus()
         searchInput.value = ""
+        hadSearch.value = false
+        emit('clear-search')
    }
+
+   const onKeyPress = async (e: Event) => {
+        const key = e as KeyboardEvent
+        hadSearch.value = Boolean(key.key === 'Enter' && searchInput.value)
+        if (hadSearch.value) emit('search', searchInput.value)
+   }
+
+   watch(searchInput, () => {
+        if (!searchInput.value && hadSearch.value) {
+            emit('clear-search')
+            hadSearch.value = false
+        }
+   })
 </script>
 
 <template>
@@ -19,6 +37,7 @@
                 class="search-input"
                 type="text"
                 placeholder="Search..."
+                @keypress="onKeyPress"
             />
             <button @click="onClickClearSearch"><i class="ri-close-line"></i></button>
         </div>
